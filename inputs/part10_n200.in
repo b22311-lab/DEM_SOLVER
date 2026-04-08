@@ -1,0 +1,30 @@
+! Part 10 experiment: N=200 particles
+&domain
+    dimension=2
+    xr_in=30.0
+    yr_in=30.0
+/
+
+&material_properties
+    k=2000
+    gamma=1.0
+    density=1000.0
+    rad_init=0.05
+    nparticles=200
+/
+
+&particle_initialization
+/
+
+&simulation_control
+    time_step=0.001
+    end_time=0.2
+    write_interval=20
+    verbose=.false.
+/
+
+&gravity
+    gravity_axis=2
+    gravity_magnitude=9.81
+/
+/

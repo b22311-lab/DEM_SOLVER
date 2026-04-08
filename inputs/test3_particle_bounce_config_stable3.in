@@ -1,0 +1,30 @@
+! Particle Bounce Test (stable 3): stiffer contact with moderate damping
+&domain
+    dimension=2
+    xr_in=5.0
+    yr_in=5.0
+/
+
+&material_properties 
+    k=20000
+    gamma=3.0
+    density=1000.0
+    rad_init=0.05
+    nparticles=1
+/
+
+&particle_initialization
+    posit_init=2.5,4.5
+/
+
+&simulation_control
+    time_step=0.001
+    end_time=8.0
+    write_interval=10
+/
+
+&gravity
+    gravity_axis=2
+    gravity_magnitude=9.81
+/
+/

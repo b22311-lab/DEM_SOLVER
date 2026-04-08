@@ -1,0 +1,32 @@
+! Part 18 benchmark: N=5000, brute-force all-pairs
+&domain
+    dimension=2
+    xr_in=30.0
+    yr_in=30.0
+/
+
+&material_properties
+    k=2000
+    gamma=1.0
+    density=1000.0
+    rad_init=0.05
+    nparticles=5000
+/
+
+&particle_initialization
+/
+
+&simulation_control
+    time_step=0.001
+    end_time=0.20
+    write_interval=200
+    verbose=.false.
+    contact_search_method=0
+    cell_size_factor=2.5
+/
+
+&gravity
+    gravity_axis=2
+    gravity_magnitude=9.81
+/
+/

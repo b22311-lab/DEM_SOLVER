@@ -1,0 +1,31 @@
+! Constant Velocity Test: Single particle moves at constant velocity (gravity=0)
+&domain
+    dimension=2
+    xr_in=10.0
+    yr_in=10.0
+/
+
+&material_properties 
+    k=100
+    gamma=0
+    density=1e-09
+    rad_init=0.05
+    nparticles=1
+/
+
+&particle_initialization
+    posit_init=1.0,5.0
+    vel_init=1.0,0.0
+/
+
+&simulation_control
+    time_step=0.01
+    end_time=5.0
+    write_interval=10
+/
+
+&gravity
+    gravity_axis=2
+    gravity_magnitude=0.0
+/
+/

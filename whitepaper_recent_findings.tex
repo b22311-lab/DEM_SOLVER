@@ -1,0 +1,37 @@
+\subsection{Implementation and Validation Log (April 2026)}
+The following updates were completed and logged for direct inclusion in the white paper.
+
+\subsubsection{Bounce-Detection Robustness in Post-Processing}
+The verification workflow was updated in \texttt{test\_verification.py} to avoid false bounce counts when output files were generated from a configuration different from \texttt{input\_config.in}. Two changes were applied:
+\begin{enumerate}
+    \item Physical time is now read from each VTK header (``Particle data at time ...'') rather than inferred only from a single external configuration file.
+    \item Impact detection now uses a ground-contact-aware condition based on particle radius, combined with velocity sign-change and local-minimum filtering, followed by a small temporal de-duplication window.
+\end{enumerate}
+With these changes, the tuned bounce case reports five impacts in the $8\,\mathrm{s}$ analysis window at approximately $t=[0.96,\,2.79,\,4.54,\,6.22,\,7.82]$ s.
+
+\subsubsection{Serial Profiling (Part 12)}
+A dedicated profiling run was logged in \texttt{part12\_serial\_profile.csv} and \texttt{part12\_profile\_report.txt}. For case \texttt{part10\_n5000}, the measured serial runtime and distribution were:
+\begin{itemize}
+    \item total runtime: $2.0731\,\mathrm{s}$
+    \item particle contact stage: $2.0384\,\mathrm{s}$ ($98.33\%$)
+    \item output stage: $3.0803\times10^{-2}\,\mathrm{s}$ ($1.49\%$)
+\end{itemize}
+The dominant computational bottleneck is therefore the particle--particle contact stage.
+
+\subsubsection{Parallel Correctness Checks (Part 13)}
+Serial-vs-OpenMP comparisons were logged in \texttt{parallel\_validation\_report.csv} for $N=200,1000,5000$ and thread counts $p=2,4,8$. All checks returned \texttt{PASS} with
+\begin{itemize}
+    \item max absolute position difference: $0.0$
+    \item max absolute velocity difference: $0.0$
+    \item max absolute kinetic-energy difference: $0.0$
+\end{itemize}
+under the configured tolerances.
+
+\subsubsection{Scaling and Amdahl Interpretation (Part 14)}
+Performance artifacts were generated through \texttt{performance\_raw.csv}, \texttt{performance\_speedup.csv}, and \texttt{performance\_amdahl\_fit.csv}. Selected results at $p=8$ are:
+\begin{itemize}
+    \item $N=200$: $S(8)=0.969$, $E(8)=0.121$
+    \item $N=1000$: $S(8)=1.722$, $E(8)=0.215$
+    \item $N=5000$: $S(8)=2.248$, $E(8)=0.281$
+\end{itemize}
+This trend indicates that small systems are overhead-dominated, while larger systems amortize OpenMP overhead better. Fitted Amdahl serial fractions were approximately $f\approx0.49$ ($N=1000$) and $f\approx0.47$ ($N=5000$), consistent with non-ideal scaling.

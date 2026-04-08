@@ -1,0 +1,30 @@
+! write boundary values 0<x<xr_in, 0<y<yr_in ,0<z<zr_in
+&domain
+    dimension=2
+    xr_in=5.0
+    yr_in=5.0
+/
+
+! write the stiffness , damping factor and other material_properties
+&material_properties 
+    k=1
+    gamma=1
+    density=1e-09
+    rad_init=0.05
+    nparticles=1
+/
+! writing the numbers of particles and initialize position and velocities , posit_init ,vel_init
+&particle_initialization
+    posit_init=2.0,1.0
+/
+! simulation parameter : time_step , write_interval (tells the solver to write after that many timesteps) 
+&simulation_control
+    time_step=0.01
+    end_time=0.4
+    write_interval=1
+/
+!gravity input : gravity_axis (1 for x , 2 for y and 3 for z) , gravity_magnitude (default 9.81)
+&gravity
+    gravity_axis=2
+/
+/

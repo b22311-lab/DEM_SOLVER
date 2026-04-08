@@ -1,0 +1,30 @@
+! Particle Bounce Test: Drop particle with damping, observe bouncing behavior
+&domain
+    dimension=2
+    xr_in=5.0
+    yr_in=5.0
+/
+
+&material_properties 
+    k=500
+    gamma=0.5
+    density=1e-09
+    rad_init=0.05
+    nparticles=1
+/
+
+&particle_initialization
+    posit_init=2.5,4.5
+/
+
+&simulation_control
+    time_step=0.001
+    end_time=2.0
+    write_interval=10
+/
+
+&gravity
+    gravity_axis=2
+    gravity_magnitude=9.81
+/
+/

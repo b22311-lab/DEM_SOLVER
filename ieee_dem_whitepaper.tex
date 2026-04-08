@@ -1,0 +1,249 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{xcolor}
+
+\title{Development and Verification of a Discrete Element Method Solver for Particle Dynamics}
+
+\author{
+\IEEEauthorblockN{Pranjal Vats}
+\IEEEauthorblockA{
+SMME / Indian Institute of Technology , Mandi \\
+}
+}
+
+\newcommand{\projectrepo}{\url{https://github.com/b22311-lab/DEM_SOLVER}}
+
+\newcommand{\placeholderfigure}[2]{%
+    \fbox{%
+        \parbox[c][0.23\textheight][c]{0.95\columnwidth}{%
+            \centering
+            \textbf{Placeholder Figure}\\[0.5em]
+            #1\\[0.5em]
+            \texttt{\detokenize{#2}}
+        }%
+    }%
+}
+
+\newcommand{\paperfigure}[3]{%
+    \begin{figure}[!t]
+        \centering
+        \IfFileExists{#1}{%
+            \includegraphics[width=\columnwidth]{#1}%
+        }{%
+            \placeholderfigure{#2}{#1}%
+        }%
+        \caption{#2}
+        \label{#3}
+    \end{figure}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper reports an end-to-end discrete element method (DEM) workflow implemented in Fortran for spherical particles with gravity, particle--particle contact, and wall interaction inside a rectangular domain. The solver uses a linear spring-dashpot contact model with semi-implicit Euler time integration and is supported by Python post-processing for verification, profiling analysis, scaling plots, and report-ready figures. Verification covers free fall, constant-velocity transport, and damped bouncing behavior. Profiling identifies particle-contact evaluation as the dominant hotspot, motivating OpenMP parallelization with thread-safe force accumulation and validated serial-parallel equivalence. The final study includes measured speedup/efficiency trends, strong and weak scaling, a cell-linked neighbour-search comparison against all-pairs contact search, and timestep-sensitivity analysis with observed convergence behavior.
+\end{abstract}
+
+\begin{IEEEkeywords}
+discrete element method, DEM, Fortran, particle simulation, verification, VTK, OpenMP
+\end{IEEEkeywords}
+
+\section{Introduction}
+The discrete element method is widely used to model granular systems in which particles interact through short-range contact forces. This project develops a complete DEM simulation and analysis pipeline, from governing equations and implementation through verification, profiling, shared-memory parallelization, and performance characterization.
+
+The solver advances spherical particles in a rectangular box domain while neglecting rotational dynamics, which keeps the study focused on contact-force modeling, timestep integration behavior, and computational performance. The code is organized into modular Fortran components and writes VTK outputs that are consumed by reproducible Python scripts for verification metrics, scaling studies, and figure generation.
+
+The manuscript presents: (i) mathematical formulation and implementation details, (ii) verification on canonical test cases, (iii) hotspot profiling and OpenMP acceleration, (iv) strong/weak scaling behavior, and (v) two bonus extensions: neighbour-search algorithm comparison and timestep-sensitivity analysis.
+
+All project files, scripts, and figure-generation workflows are maintained in the project repository: \projectrepo.
+
+\section{Mathematical Formulation}
+The solver tracks the translational motion of $N$ spherical particles. For particle $i$, the position and velocity vectors are denoted by $\mathbf{x}_i$ and $\mathbf{v}_i$, respectively, and the particle mass is $m_i$. The governing equations are
+\begin{equation}
+    m_i \frac{d \mathbf{v}_i}{dt} = \mathbf{F}_i,
+\end{equation}
+\begin{equation}
+    \frac{d \mathbf{x}_i}{dt} = \mathbf{v}_i.
+\end{equation}
+The total force acting on a particle is composed of body force and contact contributions,
+\begin{equation}
+    \mathbf{F}_i = m_i \mathbf{g} + \sum_{j \ne i} \mathbf{F}^{c}_{ij} + \mathbf{F}^{w}_i,
+\end{equation}
+where $\mathbf{g}$ is the gravitational acceleration vector, $\mathbf{F}^{c}_{ij}$ is the particle--particle contact force, and $\mathbf{F}^{w}_i$ is the wall-contact force.
+
+For particle interactions, the relative position vector is
+\begin{equation}
+    \mathbf{r}_{ij} = \mathbf{x}_j - \mathbf{x}_i,
+\end{equation}
+with center distance
+\begin{equation}
+    d_{ij} = \lVert \mathbf{r}_{ij} \rVert.
+\end{equation}
+The contact normal is then
+\begin{equation}
+    \mathbf{n}_{ij} = \frac{\mathbf{r}_{ij}}{d_{ij}},
+\end{equation}
+and the overlap is
+\begin{equation}
+    \delta_{ij} = R_i + R_j - d_{ij}.
+\end{equation}
+If $\delta_{ij} > 0$, a linear spring-dashpot model is used:
+\begin{equation}
+    v_{n,ij} = (\mathbf{v}_j - \mathbf{v}_i) \cdot \mathbf{n}_{ij},
+\end{equation}
+\begin{equation}
+    F_n = \max \left(0,\; k_n \delta_{ij} - \eta_n v_{n,ij} \right),
+\end{equation}
+\begin{equation}
+    \mathbf{F}^{c}_{ij} = F_n \mathbf{n}_{ij}.
+\end{equation}
+The implemented force expression follows this capped normal-force form to avoid nonphysical attraction during separation.
+
+Wall contact is handled by checking the overlap of each particle with the box boundaries. For a generic wall with penetration $\delta_w > 0$, the current solver applies the same spring-dashpot idea in the outward wall-normal direction:
+\begin{equation}
+    \mathbf{F}^{w}_i =
+    \max \left(0,\; k_n \delta_w - \eta_n v_{n,w} \right)\mathbf{n}_w.
+\end{equation}
+This formulation is consistent with the assignment statement and matches the structure of the implemented wall-contact routine.
+
+Time integration uses the semi-implicit Euler scheme,
+\begin{equation}
+    \mathbf{v}^{n+1}_i = \mathbf{v}^{n}_i + \frac{\mathbf{F}^{n}_i}{m_i}\Delta t,
+\end{equation}
+\begin{equation}
+    \mathbf{x}^{n+1}_i = \mathbf{x}^{n}_i + \mathbf{v}^{n+1}_i \Delta t.
+\end{equation}
+The present implementation directly follows this update order inside the timestep loop.
+
+\section{Numerical Algorithm}
+The solver is organized into modular Fortran source files, each with a clear role in the serial workflow.
+
+\subsection{Input and Domain Setup}
+The module \texttt{input\_reader.f90} reads the simulation setup using Fortran namelists. The input file defines domain dimensions, material properties, particle count, initial particle positions and velocities, timestep size, final time, write interval, and gravity direction and magnitude. This module allocates arrays for user-specified initial particle states and constructs the gravity-force vector from the chosen axis.
+
+The module \texttt{domain\_mkr.f90} uses the parsed dimensionality and extents to allocate and populate the domain boundary array. The current code supports both two-dimensional and three-dimensional geometry layouts, although the current examples and verification plots are focused on the two-dimensional case.
+
+\subsection{Particle State and Contact Handling}
+The core particle logic resides in \texttt{particle\_init.f90}. Despite the filename, this module is responsible for considerably more than initialization. It allocates and stores particle positions, velocities, forces, radii, masses, and temporary relative vectors. The material setup computes particle masses from the prescribed density and radius, and body-force application adds gravity to each particle at every timestep.
+
+Two contact routines form the main interaction model. The routine for particle--particle contact loops over pairs, computes overlap from center distance, evaluates relative normal velocity, and then applies equal-and-opposite forces based on the linear spring-dashpot model. The wall-contact routine checks boundary overlap for each coordinate direction and applies a restoring contact force if penetration is detected. The same module also updates velocities and positions using the semi-implicit Euler method and contains small diagnostic routines for kinetic energy and particle height.
+
+\subsection{Main Time-Stepping Loop}
+The executable driver in \texttt{main\_loop.f90} orchestrates the simulation. It reads the input file from the command line, initializes particle radius and material data, constructs the domain, and enters the timestep loop. Within each step, the code resets the force state through the initialization routine, applies body force, retrieves diagnostic arrays for printing, computes wall and particle contacts, updates velocity and position for each particle, and writes VTK output at the requested interval. This ordering matches the assignment algorithm at a high level: zero forces, add gravity, resolve contact, integrate, compute diagnostics, and write output.
+
+\subsection{Output and Post-Processing}
+The module \texttt{write\_output.f90} exports solver state to ASCII VTK files. For each selected timestep, the writer outputs particle coordinates and per-particle fields including radius, height, kinetic energy, and velocity. This makes the solver output directly usable by visualization or post-processing tools.
+
+The file \texttt{test\_verification.py} performs post-processing of the VTK output. It reads data via PyVista, extracts time histories, and generates publication-style figures for free-fall, constant-velocity, and bouncing-particle verification cases.
+
+\subsection{Example Configuration}
+The sample file \texttt{input\_config.in} illustrates the current input style. It provides a two-dimensional box, a single particle, user-defined stiffness and damping constants, radius and density, initial position, timestep information, and gravity acting along the second coordinate direction. This configuration style is suitable for small verification cases before moving to larger particle counts and future performance studies.
+
+\section{Verification and Testing}
+Verification is essential before any optimization or parallelization effort. The current repository includes a Python-based verification workflow designed around the assignment's three recommended tests: free fall, constant velocity, and particle bounce. The solver writes VTK snapshots, and the Python script reconstructs time histories for particle position, velocity, height, and kinetic energy.
+
+The verification workflow now produces all three required test figures and associated diagnostics from VTK outputs.
+
+\paperfigure{test1_freefall_verification.png}{Free-fall verification plot generated from \texttt{test\_verification.py}.}{fig:freefall}
+
+\paperfigure{test2_constant_velocity_verification.png}{Constant-velocity verification result generated from the post-processing workflow.}{fig:constant_velocity}
+
+\paperfigure{test3_particle_bounce_verification.png}{Bouncing-particle verification plot expected from \texttt{test\_verification.py}. }{fig:bounce}
+
+The verification logic and interpretation are:
+\begin{itemize}
+    \item Free-fall testing compares numerical height and velocity against the analytical gravity-driven solution under gravity.
+    \item Constant-velocity testing disables gravity and checks that position evolves linearly while the velocity remains constant.
+    \item Bounce testing examines wall impact, rebound height decay, and kinetic-energy dissipation under damping.
+\end{itemize}
+The observed trends are physically consistent with the selected test setups: expected free-fall behavior in Test 1, constant-velocity behavior with gravity disabled in Test 2, and damped rebound dynamics in Test 3.
+
+\section{Profiling Results}
+Serial profiling was instrumented in the timestep driver and logged for each major stage. For the representative case \texttt{part10\_n5000} (single-thread execution), the measured total runtime was $2.0731\,\mathrm{s}$. Runtime distribution was heavily dominated by particle--particle contact search and force computation:
+\begin{itemize}
+    \item particle contact stage: $2.0384\,\mathrm{s}$ ($98.33\%$),
+    \item output stage: $3.0803\times 10^{-2}\,\mathrm{s}$ ($1.49\%$),
+    \item all remaining stages combined: $<0.2\%$.
+\end{itemize}
+These measurements clearly identify the contact stage as the principal computational bottleneck and the primary target for parallelization and algorithmic optimization.
+
+\section{Parallel Implementation}
+\input{openmp_parallelization_findings.tex}
+
+\section{Performance Analysis}
+Performance was evaluated using
+\begin{equation}
+    S(p) = \frac{T_1}{T_p},
+\end{equation}
+\begin{equation}
+    E(p) = \frac{S(p)}{p},
+\end{equation}
+with $T_1$ and $T_p$ denoting runtimes at one and $p$ threads, respectively. Measured speedup/efficiency plots are reported directly from \texttt{performance\_raw.csv} and \texttt{performance\_speedup.csv}.
+
+\paperfigure{speedup_plot.png}{Measured OpenMP speedup for particle-count test cases used in Part 14.}{fig:speedup_main}
+
+\paperfigure{efficiency_plot.png}{Measured OpenMP efficiency for particle-count test cases used in Part 14.}{fig:efficiency_main}
+
+\input{scaling_modes_findings.tex}
+
+\paperfigure{strong_scaling_speedup.png}{Strong-scaling speedup for fixed-size run configuration.}{fig:strong_speedup}
+
+\paperfigure{weak_scaling_runtime.png}{Weak-scaling runtime trend for approximately fixed particles-per-thread.}{fig:weak_runtime}
+
+\section{Bonus Extensions}
+\input{part18_findings.tex}
+
+\paperfigure{part18_total_runtime.png}{Part 18 total-runtime comparison between all-pairs and cell-linked neighbour-search methods.}{fig:part18_total}
+
+\paperfigure{part18_contact_runtime.png}{Part 18 contact-stage runtime comparison between all-pairs and cell-linked methods.}{fig:part18_contact}
+
+\paperfigure{part18_candidates.png}{Part 18 candidate-pair scaling per timestep.}{fig:part18_candidates}
+
+\input{part19_2_findings.tex}
+
+\paperfigure{part19_2_trajectory_error_overlay.png}{Part 19.2 trajectory error histories $(y_{num}-y_{ref})$ for multiple timesteps.}{fig:part19_traj}
+
+\paperfigure{part19_2_error_vs_dt.png}{Part 19.2 error versus timestep size.}{fig:part19_err_dt}
+
+\paperfigure{part19_2_critical_energy.png}{Part 19.2 stability-limit check: normalized total energy for $\Delta t=0.003$ and $0.004$ around the theoretical threshold.}{fig:part19_energy}
+
+\section{Discussion and Conclusions}
+The implemented solver now completes the required workflow from formulation to verification, profiling, OpenMP parallelization, and scaling analysis. The modular Fortran structure enabled targeted optimization of hotspot routines while preserving a clear separation between input handling, force computation, integration, and output.
+
+Profiling shows that contact search/force evaluation dominates runtime, which is consistent with the all-pairs complexity baseline. OpenMP was introduced with explicit race-avoidance controls (thread-local force accumulation, explicit shared/private clauses, and reductions for scalar counters) and validated against serial outputs across multiple cases and thread counts. The serial-parallel validation campaign reported PASS for all tested combinations.
+
+Performance results highlight two important points. First, speedup is problem-size dependent and can be limited by overhead for small systems. Second, separating strong and weak scaling is essential for correct interpretation; weak scaling degrades strongly for the all-pairs baseline because pair checks grow superlinearly with total particle count when $N\propto p$.
+
+The bonus neighbour-search study demonstrates that reducing candidate-pair checks can transform performance at larger $N$, while introducing overhead at small $N$. The timestep-sensitivity study confirms expected first-order temporal behavior for position error and reduced energy drift at smaller timesteps. Together, these studies provide a reproducible and extensible foundation for further DEM research extensions.
+
+\section*{Acknowledgment}
+This report was prepared with assistance from a large language model toolchain for code-editing support, scripting assistance, and drafting help. All technical decisions, final verification runs, and reported conclusions were reviewed by the author before submission.
+
+\begin{thebibliography}{9}
+
+\bibitem{ieee_template}
+IEEE, ``IEEE Conference Templates,'' available: \url{https://www.ieee.org/conferences/publishing/templates.html}.
+
+\bibitem{cundall}
+P. A. Cundall and O. D. L. Strack, ``A discrete numerical model for granular assemblies,'' \emph{G\'eotechnique}, vol. 29, no. 1, pp. 47--65, 1979.
+
+\bibitem{project_repo}
+Project repository, ``DEM solver source code, build files, verification scripts, and paper support files,'' available: \projectrepo.
+
+\bibitem{edem_linear_spring}
+Altair EDEM documentation, ``Linear Spring model (contact duration and timestep guidance),'' available: \url{https://2022.help.altair.com/2022.1/EDEM/Creator/Physics/Base_Models/Linear_Spring.htm}.
+
+\bibitem{pfc_timestep}
+Itasca PFC documentation, ``Timestep determination for explicit DEM integration,'' available: \url{https://docs.itascacg.com/pfc600/pfc/docproject/source/manual/numerical_simulations_with_pfc/pfc_formulation/timestep_constraints.html}.
+
+\end{thebibliography}
+
+\end{document}

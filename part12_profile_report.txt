@@ -1,0 +1,23 @@
+Part 12 Serial Profiling Report
+Case: part10_n5000
+Log file: part12_profile/part10_n5000_serial.log
+
+Total runtime [s]: 1.3548980150080752
+
+Runtime distribution [s]:
+- initialize_s: 6.3585699535906315E-004
+- gravity_s: 1.1297399760223925E-004
+- particle_contacts_s: 1.3232726520218421
+- wall_contacts_s: 9.1531002544797957E-004
+- integration_s: 1.7617809353396297E-003
+- output_s: 2.8177065018098801E-002
+
+Runtime distribution [%]:
+- pct_initialize: 4.6930247761509447E-002
+- pct_gravity: 8.3381919783509263E-003
+- pct_particle_contacts: 97.665849190424524
+- pct_wall_contacts: 6.7555640004574397E-002
+- pct_integration: 0.13003052007048144
+- pct_output: 2.0796447190846954
+
+Identified bottleneck: particle_contacts_s

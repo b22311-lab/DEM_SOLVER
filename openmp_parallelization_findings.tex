@@ -1,0 +1,7 @@
+OpenMP parallelization was applied to the dominant particle-contact workload identified in profiling. The implementation uses explicit loop-level directives on contact and integration regions, with data-sharing attributes declared in each parallel region to reduce accidental races.
+
+To preserve correctness, particle force updates use thread-local accumulation buffers followed by a deterministic reduction into global arrays. Scalar diagnostics (for example, contact counters and timing totals) are handled with OpenMP reductions. This strategy avoids atomic-update bottlenecks in the inner contact loop while maintaining serial-equivalent totals.
+
+Parallel validation was executed by comparing serial and multi-thread runs over representative test cases and checking output equivalence within numerical tolerance. The validation campaign reported consistent trajectory trends and stable aggregate metrics, indicating that the OpenMP implementation preserves solver behavior while reducing runtime on multi-core hardware.
+
+Measured speedup is case-size dependent, with better gains on larger particle sets where contact work dominates overhead. This is consistent with the profiler evidence that contact computation is the principal runtime hotspot and therefore the highest-leverage target for shared-memory parallelism.

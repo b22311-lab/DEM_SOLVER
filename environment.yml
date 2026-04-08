@@ -1,0 +1,15 @@
+name: dem-solver
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - matplotlib
+  - pyvista
+  - vtk
+  - pandas
+  - pillow
+  - scipy
+  - pip
+  - make
+  - fortran-compiler
