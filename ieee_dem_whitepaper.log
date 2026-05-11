@@ -1,0 +1,476 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.4.8)  12 MAY 2026 01:55
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**ieee_dem_whitepaper.tex
+(./ieee_dem_whitepaper.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+(/home/ath/.TinyTeX/texmf-dist/tex/latex/ieeetran/IEEEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/ieeetran/
+\@IEEEtrantmpdimenA=\dimen150
+\@IEEEtrantmpdimenB=\dimen151
+\@IEEEtrantmpdimenC=\dimen152
+\@IEEEtrantmpcountA=\count275
+\@IEEEtrantmpcountB=\count276
+\@IEEEtrantmpcountC=\count277
+\@IEEEtrantmptoksA=\toks17
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 503.
+(/home/ath/.TinyTeX/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+-- Using 8.5in x 11in (letter) paper.
+-- Using PDF output.
+\@IEEEnormalsizeunitybaselineskip=\dimen153
+-- This is a 10 point document.
+LaTeX Encoding Info:    Redeclaring text command \textunderscore (encoding ?) on input line 937.
+\CLASSINFOnormalsizebaselineskip=\dimen154
+\CLASSINFOnormalsizeunitybaselineskip=\dimen155
+\IEEEnormaljot=\dimen156
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+\IEEEquantizedlength=\dimen157
+\IEEEquantizedlengthdiff=\dimen158
+\IEEEquantizedtextheightdiff=\dimen159
+\IEEEilabelindentA=\dimen160
+\IEEEilabelindentB=\dimen161
+\IEEEilabelindent=\dimen162
+\IEEEelabelindent=\dimen163
+\IEEEdlabelindent=\dimen164
+\IEEElabelindent=\dimen165
+\IEEEiednormlabelsep=\dimen166
+\IEEEiedmathlabelsep=\dimen167
+\IEEEiedtopsep=\skip49
+\c@section=\count278
+\c@subsection=\count279
+\c@subsubsection=\count280
+\c@paragraph=\count281
+\c@IEEEsubequation=\count282
+\abovecaptionskip=\skip50
+\belowcaptionskip=\skip51
+\c@figure=\count283
+\c@table=\count284
+\@IEEEeqnnumcols=\count285
+\@IEEEeqncolcnt=\count286
+\@IEEEsubeqnnumrollback=\count287
+\@IEEEquantizeheightA=\dimen168
+\@IEEEquantizeheightB=\dimen169
+\@IEEEquantizeheightC=\dimen170
+\@IEEEquantizeprevdepth=\dimen171
+\@IEEEquantizemultiple=\count288
+\@IEEEquantizeboxA=\box53
+\@IEEEtmpitemindent=\dimen172
+\IEEEPARstartletwidth=\dimen173
+\c@IEEEbiography=\count289
+\@IEEEtranrubishbin=\box54
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 116.
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)) (/home/ath/.TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks18
+\inpenc@posthook=\toks19
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen174
+\Gin@req@width=\dimen175
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip52
+
+For additional information on amsmath, use the `?' option.
+(/home/ath/.TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks21
+\ex@=\dimen176
+)) (/home/ath/.TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen177
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count290
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count291
+\leftroot@=\count292
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count293
+\DOTSCASE@=\count294
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box55
+\strutbox@=\box56
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen178
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count295
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count296
+\dotsspace@=\muskip17
+\c@parentequation=\count297
+\dspbrk@lvl=\count298
+\tag@help=\toks22
+\row@=\count299
+\column@=\count300
+\maxfields@=\count301
+\andhelp@=\toks23
+\eqnshift@=\dimen179
+\alignsep@=\dimen180
+\tagshift@=\dimen181
+\tagwidth@=\dimen182
+\totwidth@=\dimen183
+\lineht@=\dimen184
+\@envbody=\toks24
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/home/ath/.TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen185
+\lightrulewidth=\dimen186
+\cmidrulewidth=\dimen187
+\belowrulesep=\dimen188
+\belowbottomsep=\dimen189
+\aboverulesep=\dimen190
+\abovetopsep=\dimen191
+\cmidrulesep=\dimen192
+\cmidrulekern=\dimen193
+\defaultaddspace=\dimen194
+\@cmidla=\count302
+\@cmidlb=\count303
+\@aboverulesep=\dimen195
+\@belowrulesep=\dimen196
+\@thisruleclass=\count304
+\@lastruleclass=\count305
+\@thisrulewidth=\dimen197
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (/home/ath/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count306
+) (latex_build/ieee_dem_whitepaper.aux)
+\openout1 = `ieee_dem_whitepaper.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+
+-- Lines per column: 56 (exact).
+(/home/ath/.TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1{/home/ath/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/home/ath/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+
+]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 130.
+ (/home/ath/.TinyTeX/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Underfull \hbox (badness 2088) in paragraph at lines 132--133
+[]\T1/ptm/m/n/10 The mod-ule \T1/pcr/m/n/10 domain_mkr.f90 \T1/ptm/m/n/10 uses the parsed di-
+ []
+
+
+Underfull \hbox (badness 6047) in paragraph at lines 145--146
+[]\T1/ptm/m/n/10 The file \T1/pcr/m/n/10 test_verification.py \T1/ptm/m/n/10 per-forms post-
+ []
+
+<test1_freefall_verification.png, id=17, 857.604pt x 640.794pt>
+File: test1_freefall_verification.png Graphic file (type png)
+<use test1_freefall_verification.png>
+Package pdftex.def Info: test1_freefall_verification.png  used on input line 155.
+(pdftex.def)             Requested size: 252.0pt x 188.28947pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--155
+\T1/ptm/m/n/8 Fig. 1.  Free-fall ver-i-fi-ca-tion plot gen-er-ated from
+ []
+
+<test2_constant_velocity_verification.png, id=19, 857.604pt x 640.794pt>
+File: test2_constant_velocity_verification.png Graphic file (type png)
+<use test2_constant_velocity_verification.png>
+Package pdftex.def Info: test2_constant_velocity_verification.png  used on input line 157.
+(pdftex.def)             Requested size: 252.0pt x 188.28947pt.
+<test3_particle_bounce_verification.png, id=20, 857.604pt x 640.794pt>
+File: test3_particle_bounce_verification.png Graphic file (type png)
+<use test3_particle_bounce_verification.png>
+Package pdftex.def Info: test3_particle_bounce_verification.png  used on input line 159.
+(pdftex.def)             Requested size: 252.0pt x 188.28947pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--159
+\T1/ptm/m/n/8 Fig. 3.  Bouncing-particle ver-i-fi-ca-tion plot ex-pected from
+ []
+
+[2 <./test1_freefall_verification.png>] (./openmp_parallelization_findings.tex
+Underfull \hbox (badness 2142) in paragraph at lines 1--2
+[]\T1/ptm/m/n/10 OpenMP par-al-leliza-tion was ap-plied to the dom-i-nant
+ []
+
+)
+Underfull \hbox (badness 7256) in paragraph at lines 188--190
+\T1/ptm/m/n/10 with $\OML/cmm/m/it/10 T[]$ \T1/ptm/m/n/10 and $\OML/cmm/m/it/10 T[]$ \T1/ptm/m/n/10 de-not-ing run-times at one and $\OML/cmm/m/it/10 p$
+ []
+
+
+Underfull \hbox (badness 5908) in paragraph at lines 188--190
+\T1/ptm/m/n/10 threads, re-spec-tively. Mea-sured speedup/efficiency plots
+ []
+
+<speedup_plot.png, id=27, 570.933pt x 354.123pt>
+File: speedup_plot.png Graphic file (type png)
+<use speedup_plot.png>
+Package pdftex.def Info: speedup_plot.png  used on input line 191.
+(pdftex.def)             Requested size: 252.0pt x 156.3063pt.
+<efficiency_plot.png, id=28, 570.933pt x 354.123pt>
+File: efficiency_plot.png Graphic file (type png)
+<use efficiency_plot.png>
+Package pdftex.def Info: efficiency_plot.png  used on input line 193.
+(pdftex.def)             Requested size: 252.0pt x 156.3063pt.
+(./scaling_modes_findings.tex (./strong_scaling_findings.tex) (./weak_scaling_findings.tex) [3 <./test2_constant_velocity_verification.png> <./test3_particle_bounce_verification.png>])
+<strong_scaling_speedup.png, id=34, 513.117pt x 339.1872pt>
+File: strong_scaling_speedup.png Graphic file (type png)
+<use strong_scaling_speedup.png>
+Package pdftex.def Info: strong_scaling_speedup.png  used on input line 197.
+(pdftex.def)             Requested size: 252.0pt x 166.581pt.
+<weak_scaling_runtime.png, id=35, 513.117pt x 339.1872pt>
+File: weak_scaling_runtime.png Graphic file (type png)
+<use weak_scaling_runtime.png>
+Package pdftex.def Info: weak_scaling_runtime.png  used on input line 199.
+(pdftex.def)             Requested size: 252.0pt x 166.581pt.
+ (./part18_findings.tex
+Overfull \hbox (8.73083pt too wide) in paragraph at lines 9--18
+ [][] 
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 2--203
+\T1/ptm/m/n/10 with \T1/pcr/m/n/10 contact_search_method=0 \T1/ptm/m/n/10 (all-pairs) and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2--203
+\T1/pcr/m/n/10 contact_search_method=1 \T1/ptm/m/n/10 (cell-linked). Em-pir-i-cal
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2--203
+\T1/ptm/m/n/10 candidate-pair scal-ing from the mea-sured data is
+ []
+
+
+Underfull \hbox (badness 1609) in paragraph at lines 2--203
+\T1/ptm/m/n/10 ap-prox-i-mately $\OMS/cmsy/m/n/10 O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 for all-pairs and $\OMS/cmsy/m/n/10 O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 for
+ []
+
+
+Underfull \hbox (badness 6380) in paragraph at lines 2--203
+\OML/cmm/m/it/10 t[]; t[]$ \T1/ptm/m/n/10 are contact-stage run-times; $\OML/cmm/m/it/10 S[]; S[]$ \T1/ptm/m/n/10 are the
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 2--203
+\T1/ptm/m/n/10 contact counts match be-tween meth-ods for each tested
+ []
+
+
+Underfull \hbox (badness 1635) in paragraph at lines 2--203
+\OML/cmm/m/it/10 N$\T1/ptm/m/n/10 , con-firm-ing contact-search cor-rect-ness while re-duc-ing
+ []
+
+[4 <./speedup_plot.png> <./efficiency_plot.png> <./strong_scaling_speedup.png> <./weak_scaling_runtime.png>]
+<part18_total_runtime.png, id=47, 498.663pt x 339.1872pt>
+File: part18_total_runtime.png Graphic file (type png)
+<use part18_total_runtime.png>
+Package pdftex.def Info: part18_total_runtime.png  used on input line 204.
+(pdftex.def)             Requested size: 252.0pt x 171.4098pt.
+<part18_contact_runtime.png, id=48, 498.663pt x 339.1872pt>
+File: part18_contact_runtime.png Graphic file (type png)
+<use part18_contact_runtime.png>
+Package pdftex.def Info: part18_contact_runtime.png  used on input line 206.
+(pdftex.def)             Requested size: 252.0pt x 171.4098pt.
+<part18_candidates.png, id=49, 498.663pt x 339.1872pt>
+File: part18_candidates.png Graphic file (type png)
+<use part18_candidates.png>
+Package pdftex.def Info: part18_candidates.png  used on input line 208.
+(pdftex.def)             Requested size: 252.0pt x 171.4098pt.
+ (./part19_2_findings.tex
+Overfull \hbox (37.7448pt too wide) in paragraph at lines 7--18
+ [][] 
+ []
+
+)
+<part19_2_trajectory_error_overlay.png, id=50, 513.117pt x 339.1872pt>
+File: part19_2_trajectory_error_overlay.png Graphic file (type png)
+<use part19_2_trajectory_error_overlay.png>
+Package pdftex.def Info: part19_2_trajectory_error_overlay.png  used on input line 212.
+(pdftex.def)             Requested size: 252.0pt x 166.581pt.
+<part19_2_error_vs_dt.png, id=51, 498.663pt x 339.1872pt>
+File: part19_2_error_vs_dt.png Graphic file (type png)
+<use part19_2_error_vs_dt.png>
+Package pdftex.def Info: part19_2_error_vs_dt.png  used on input line 214.
+(pdftex.def)             Requested size: 252.0pt x 171.4098pt.
+<part19_2_critical_energy.png, id=52, 513.117pt x 339.669pt>
+File: part19_2_critical_energy.png Graphic file (type png)
+<use part19_2_critical_energy.png>
+Package pdftex.def Info: part19_2_critical_energy.png  used on input line 216.
+(pdftex.def)             Requested size: 252.0pt x 166.81761pt.
+ [5 <./part18_total_runtime.png> <./part18_contact_runtime.png> <./part18_candidates.png>]
+Underfull \hbox (badness 1769) in paragraph at lines 246--247
+\T1/ptm/m/n/8 in-te-gra-tion,'' avail-able: $https : / / docs . itascacg . com / pfc600 / pfc / docproject /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--247
+\T1/ptm/m/n/8 source / manual / numerical _ simulations _ with _ pfc / pfc _ formulation /
+ []
+
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the appropriate paper size.
+
+[6 <./part19_2_trajectory_error_overlay.png> <./part19_2_error_vs_dt.png> <./part19_2_critical_energy.png>] (latex_build/ieee_dem_whitepaper.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 4245 strings out of 469339
+ 67404 string characters out of 5466427
+ 482396 words of memory out of 5000000
+ 33005 multiletter control sequences out of 15000+600000
+ 742839 words of font info for 161 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 57i,11n,65p,963b,293s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/ath/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on latex_build/ieee_dem_whitepaper.pdf (6 pages, 1337760 bytes).
+PDF statistics:
+ 141 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+

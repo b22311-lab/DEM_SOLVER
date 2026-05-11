@@ -41,7 +41,7 @@ make clean            # runs both clean-build and clean-artifacts
 
 ## 3) One-command full artifact generation
 
-To generate figures, CSVs, LaTeX snippets, and compile the paper PDF in one run:
+To generate figures, CSVs, and LaTeX snippets in one run (and compile the paper PDF when `pdflatex` is available):
 
 ```bash
 ./run_all_artifacts.sh
@@ -55,7 +55,7 @@ The script runs:
 4. `scripts/run_scaling_modes.sh`
 5. `scripts/run_part18_study.sh`
 6. `scripts/run_part19_2_study.sh`
-7. `scripts/compile_latex_all.sh` (if available)
+7. `scripts/compile_latex_all.sh` (if available; skipped gracefully when `pdflatex` is not installed)
 
 ## 4) Key outputs
 

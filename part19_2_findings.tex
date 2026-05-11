@@ -1,0 +1,50 @@
+\subsection{Bonus Part 19.2: Timestep Sensitivity and Stability Limit}
+A free-fall case without wall contact was simulated for multiple timesteps to quantify numerical accuracy and energy behavior.
+\begin{table}[!t]
+\centering
+\caption{Part 19.2 timestep sensitivity metrics}
+\label{tab:part19-2-timestep}
+\begin{tabular}{rcccc}
+\toprule
+$\Delta t$ [s] & RMSE$(y)$ [m] & RMSE$(v_y)$ [m/s] & Max $|\Delta y|$ [m] & Max energy drift \\
+\midrule
+0.0200 & 4.616e-02 & 1.013e-07 & 7.848e-02 & 1.701e-02 \\
+0.0100 & 2.287e-02 & 1.021e-07 & 3.924e-02 & 8.612e-03 \\
+0.0050 & 1.138e-02 & 1.031e-07 & 1.962e-02 & 4.333e-03 \\
+0.0025 & 5.677e-03 & 1.027e-07 & 9.810e-03 & 2.173e-03 \\
+0.0010 & 2.268e-03 & 1.034e-07 & 3.924e-03 & 8.708e-04 \\
+\bottomrule
+\end{tabular}
+\end{table}
+A log-log fit gives an error slope of approximately 1.01 for position RMSE, which is consistent with first-order temporal behavior expected from semi-implicit Euler integration.
+Velocity RMSE remains nearly timestep-independent at about 1e-7 m/s across all tested timesteps (slope -0.01), indicating that truncation error in this observable is already below a small floating-point and interpolation floor for this setup.
+A Richardson three-grid analysis on final-height values gives observed orders between 1.00 and 1.00 (mean 1.00), consistent with first-order time integration.
+\begin{table}[!t]
+\centering
+\caption{Part 19.2 Richardson observed order (final height)}
+\label{tab:part19-2-richardson}
+\begin{tabular}{rcc}
+\toprule
+$(\Delta t_c,\Delta t_m,\Delta t_f)$ [s] & $r$ & $p_{obs}$ \\
+\midrule
+(0.0200, 0.0100, 0.0050) & 2.0 & 1.00 \\
+(0.0100, 0.0050, 0.0025) & 2.0 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+To connect this convergence study with stability limits, a bouncing test was run around a theoretical explicit-step threshold. Using a linear spring-mass estimate, the contact time is $t_c \approx \pi\sqrt{m/k_n}$ and the threshold used here is $\Delta t_{crit}=t_c/\pi$ \cite{edem_linear_spring,pfc_timestep}.
+For $m=1.3$ kg and $k_n=1.0e+05$ N/m, this gives $t_c\approx 0.0113$ s and $\Delta t_{crit}\approx 0.0036$ s.
+\begin{table}[!t]
+\centering
+\caption{Part 19.2 critical timestep check (bouncing case)}
+\label{tab:part19-2-critical}
+\begin{tabular}{rccc}
+\toprule
+$\Delta t$ [s] & $\Delta t/\Delta t_{crit}$ & Max $E/E0$ & Final $E/E0$ \\
+\midrule
+0.0030 & 0.83 & 1.39 & 0.83 \\
+0.0040 & 1.11 & 9.40 & 5.26 \\
+\bottomrule
+\end{tabular}
+\end{table}
+The under-limit run ($\Delta t=0.003$ s) remains bounded but shows numerical energy gain (Max $E/E0=1.39$), whereas the over-limit run ($\Delta t=0.004$ s) exhibits rapid unphysical energy growth (Max $E/E0=9.40$), which is visible as a sharp upward trend in the critical-energy plot.

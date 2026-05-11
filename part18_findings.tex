@@ -1,0 +1,22 @@
+\subsection{Bonus Part 18: Neighbour-Search Comparison}
+A switchable contact-search implementation was added with \texttt{contact\_search\_method=0} (all-pairs) and \texttt{contact\_search\_method=1} (cell-linked).
+Empirical candidate-pair scaling from the measured data is approximately $\mathcal{O}(N^{2.00})$ for all-pairs and $\mathcal{O}(N^{1.46})$ for the cell-linked strategy.
+\begin{table}[!t]
+\scriptsize
+\centering
+\caption{Part 18 neighbour-search comparison (serial runs)}
+\label{tab:part18-neighbour-search}
+\begin{tabular}{rcccccccc}
+\toprule
+$N$ & $t_{tot}^{AP}$ & $t_{tot}^{CL}$ & $S_{tot}$ & $t_c^{AP}$ & $t_c^{CL}$ & $S_c$ & Cand. factor \\
+\midrule
+200 & 0.0226 & 0.1932 & 0.12 & 0.0212 & 0.1914 & 0.11 & 80.57 \\
+1000 & 0.5019 & 0.2230 & 2.25 & 0.4955 & 0.2164 & 2.29 & 102.69 \\
+5000 & 12.5362 & 0.3839 & 32.66 & 12.5061 & 0.3554 & 35.18 & 458.85 \\
+\bottomrule
+\end{tabular}
+\end{table}
+where $t_{tot}^{AP}, t_{tot}^{CL}$ are total runtimes; $t_c^{AP}, t_c^{CL}$ are contact-stage runtimes; $S_{tot}, S_c$ are the corresponding cell-linked speedups over all-pairs; and Cand. factor is the candidate-pair ratio $N_{cand}^{AP}/N_{cand}^{CL}$.
+Detected-contact counts match between methods for each tested $N$, confirming contact-search correctness while reducing candidate checks.
+The measured candidate-pair reduction confirms why the baseline all-pairs method behaves as the expensive $\mathcal{O}(N^2)$ reference algorithm.
+For small systems (here $N=200$), the cell-linked method is slower than all-pairs because grid build and traversal overheads dominate the reduced pair-check count.

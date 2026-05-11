@@ -24,7 +24,7 @@ scripts/run_part19_2_study.sh
 
 echo "[7/7] LaTeX compile checks"
 if [[ -x scripts/compile_latex_all.sh ]]; then
-	scripts/compile_latex_all.sh
+	ALLOW_MISSING_PDFLATEX=1 scripts/compile_latex_all.sh
 else
 	echo "Skipped LaTeX compile: scripts/compile_latex_all.sh not found."
 fi

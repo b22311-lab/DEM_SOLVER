@@ -221,6 +221,7 @@ The implemented solver now completes the required workflow from formulation to v
 Profiling shows that contact search/force evaluation dominates runtime, which is consistent with the all-pairs complexity baseline. OpenMP was introduced with explicit race-avoidance controls (thread-local force accumulation, explicit shared/private clauses, and reductions for scalar counters) and validated against serial outputs across multiple cases and thread counts. The serial-parallel validation campaign reported PASS for all tested combinations.
 
 Performance results highlight two important points. First, speedup is problem-size dependent and can be limited by overhead for small systems. Second, separating strong and weak scaling is essential for correct interpretation; weak scaling degrades strongly for the all-pairs baseline because pair checks grow superlinearly with total particle count when $N\propto p$.
+On the local workstation used for this study, runs above 8 threads showed performance instability and occasional slowdowns, so plots and conclusions focus on $p\leq 8$ for consistent timing behavior.
 
 The bonus neighbour-search study demonstrates that reducing candidate-pair checks can transform performance at larger $N$, while introducing overhead at small $N$. The timestep-sensitivity study confirms expected first-order temporal behavior for position error and reduced energy drift at smaller timesteps. Together, these studies provide a reproducible and extensible foundation for further DEM research extensions.
 

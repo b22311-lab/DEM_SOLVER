@@ -1,0 +1,34 @@
+! Auto-generated Part 19.2 case
+&domain
+    dimension=2
+    xr_in=5.0
+    yr_in=80.0
+/
+
+&material_properties
+    k=100000.0
+    gamma=0.0
+    density=2482.817112233567
+    rad_init=0.05
+    nparticles=1
+/
+
+&particle_initialization
+    posit_init=2.5,0.2
+    vel_init=0.0,0.0
+/
+
+&simulation_control
+    time_step=0.004
+    end_time=8.0
+    write_interval=1
+    verbose=.false.
+    contact_search_method=0
+    cell_size_factor=2.5
+/
+
+&gravity
+    gravity_axis=2
+    gravity_magnitude=9.81
+/
+/

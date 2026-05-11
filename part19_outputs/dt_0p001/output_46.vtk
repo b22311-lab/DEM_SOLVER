@@ -1,0 +1,18 @@
+# vtk DataFile Version 2.0
+Particle data at time     0.046000
+ASCII
+DATASET POLYDATA
+POINTS          1 float
+    2.500000    4.489395    0.000000
+POINT_DATA          1
+SCALARS radius float
+LOOKUP_TABLE default
+    0.050000
+SCALARS height float
+LOOKUP_TABLE default
+    4.489395
+SCALARS kinetic_energy float
+LOOKUP_TABLE default
+ 0.53311674E-01
+VECTORS velocity float
+    0.000000   -0.451260    0.000000

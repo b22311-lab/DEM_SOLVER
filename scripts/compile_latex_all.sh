@@ -16,6 +16,10 @@ fi
 
 if ! command -v pdflatex >/dev/null 2>&1; then
     echo "pdflatex not found. Install a LaTeX distribution with IEEEtran support."
+    if [[ "${ALLOW_MISSING_PDFLATEX:-0}" == "1" ]]; then
+        echo "Skipping PDF build because ALLOW_MISSING_PDFLATEX=1."
+        exit 0
+    fi
     exit 1
 fi
 
